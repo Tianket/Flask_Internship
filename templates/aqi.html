@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>天气预报</title>
+    <link rel="stylesheet" href="../static/q3q.css">
+</head>
+<script>
+    window.onload = function () {
+        var xmlhttp = new XMLHttpRequest()
+        xmlhttp.open("GET", "/prov") //绑定地址
+        xmlhttp.send()
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                var res = JSON.parse(xmlhttp.responseText)
+                var sel = document.getElementById("prov")//通过id找到标签值，sel标签
+                for (var i = 0; i < res.data.length; i++) { //循环来列出省
+                    sel.innerHTML += "<option value=" + res.data[i].id + ">" + // 会覆盖上一个 所以需要加
+                        res.data[i].pname + "</option>"
+                }
+            }
+        }
+    }
+
+    function tocity() {
+        var id = document.getElementById("prov").value
+        var xmlhttp = new XMLHttpRequest()
+        xmlhttp.open("GET", "/city?pid=" + id) //get 传id值
+        xmlhttp.send()
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                var res = JSON.parse(xmlhttp.responseText)
+                var city = document.getElementById("city")
+                city.innerHTML = ""
+                for (var i = 0; i < res.length; i++) {
+                    city.innerHTML += "<option value=" + res[i].cityname + ">" +
+                        res[i].cname + "</option>"
+                }
+            }
+        }
+    }
+
+    function tokqzl() {
+        var city = document.getElementById("city").value //拿值，拼音
+        var year = document.getElementById("year").value
+        var xmlhttp = new XMLHttpRequest()
+        xmlhttp.open("GET", "/kqzl?city=" + city + "&year=" + year) //GET
+        xmlhttp.send()
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                var res = JSON.parse(xmlhttp.responseText)
+                console.log(res)
+                document.getElementById("tab").innerHTML = ""//清空完了重新存储，怕没动
+                document.getElementById("tab").innerHTML = "<tr class='bytr'>" +
+                    "<td>日期</td>" +//模板字符串
+                    "<td>质量等级</td>" +
+                    "<td>AQI指数</td>" +
+                    "<td>PM2.5</td>" +
+                    "<td>PM10</td>" +
+                    "<td>So2</td>" +
+                    "<td>No2</td>" +
+                    "<td>Co</td>" +
+                    "<td>O3</td>" +
+                    "</tr>"
+                if (res.msg == "") {//看是不是空
+                    for (var i = 0; i < res.data.length; i++) {
+                        document.getElementById("tab").innerHTML += "<tr>" +
+                            "<td>" + res.data[i].date + "</td>" +//第i个
+                            "<td>" + res.data[i].kqzl + "</td>" +
+                            "<td>" + res.data[i].aqi + "</td>" +
+                            "<td>" + res.data[i].pm25 + "</td>" +
+                            "<td>" + res.data[i].pm10 + "</td>" +
+                            "<td>" + res.data[i].so2 + "</td>" +
+                            "<td>" + res.data[i].no2 + "</td>" +
+                            "<td>" + res.data[i].co + "</td>" +
+                            "<td>" + res.data[i].o3 + "</td>" +
+                            "</tr>"
+                    }
+                } else {
+                    document.getElementById("tab").innerHTML += "<tr><td colspan='9'>" + res.msg + "</td></tr>"//字符串写进去，合并九列
+                }
+            }
+        }
+    }
+</script>
+<body>
+<div class="header">
+    <div class="nav">
+        <img src="../static/logo.png" alt="" class="img1">
+        <ul>
+            <li><a href="/">网站首页</a></li>
+            <li><a href="/news">天气新闻</a></li>
+            <li><a href="/yubao">天气预报</a></li>
+            <li class="sel"><a href="/aqi">空气质量</a></li>
+            <li><a href="/xxt">线性图</a></li>
+            <li><a href="/bzt">饼状图</a></li>
+            <li><a href="/geot">地图</a></li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="wrap content">
+    <p class="wrap-title">天气数据分析系统 > 天气预报</p>
+    <div class="seafom">
+        <p>省：<select name="pid" id="prov" onchange="tocity()">
+            <option>请选择</option>
+        </select></p>
+        <p>市：<select name="city" id="city">
+            <option>请选择</option>
+        </select></p>
+        <p>年份：<select name="year" id="year">
+            <option>请选择</option>
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+        </select></p>
+        <p><input type="button" value="查询" class="btn" onclick="tokqzl()"></p>
+    </div>
+    <h2 class="data-title">空气质量数据</h2>
+
+    <div class="datadiv">
+        <table class="tab1" id="tab">
+            <tr class="bytr">
+                <td>日期</td>
+                <td>质量等级</td>
+                <td>AQI指数</td>
+                <td>PM2.5</td>
+                <td>PM10</td>
+                <td>So2</td>
+                <td>No2</td>
+                <td>Co</td>
+                <td>O3</td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+<div class="footer">
+    XX公司 天气版权所有 copyright @XX气象分析服务中国
+</div>
+
+
+</body>
+</html>

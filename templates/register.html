@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register in</title>
+    <link rel="stylesheet" href="../static/q3q.css">
+</head>
+<body>
+<div class="header">
+    <div class="nav">
+        <img src="../static/logo.png" alt="" class="img1">
+        <ul>
+            <li><a href="/">网站首页</a></li>
+            <li><a href="/news">天气新闻</a></li>
+            <li><a href="/yubao">天气预报</a></li>
+            <li><a href="/aqi">空气质量</a></li>
+            <li><a href="/xxt">线性图</a></li>
+            <li><a href="/bzt">饼状图</a></li>
+            <li><a href="/geot">地图</a></li>
+        </ul>
+    </div>
+</div>
+
+<form action="/regininfo" method="post">
+
+    <div class="center shd">
+        <div>
+            <table border="0">
+                <tr>
+                    <td><h2>注册页面</h2></td>
+                </tr>
+                <tr>
+                    <td>用户名：</td>
+                    <td><input type="text" ; name="usrname"></td>
+                </tr>
+                <tr>
+                    <td>密码：</td>
+                    <td><input type="password" ; name="usrpwd"></td>
+                </tr>
+                <tr>
+                    <td>电话：</td>
+                    <td><input type="tel" ; name="usrtel"></td>
+                </tr>
+                <tr>
+                    <td>邮箱：</td>
+                    <td><input type="text" ; name="usrmail"></td>
+                </tr>
+                <tr>
+                    <td>性别：</td>
+                    <td><label><input name="gen" type="radio">男</label> <label><input name="gen" type="radio">女</label>
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <button type="submit" class="btn">提交</button>
+        </div>
+
+    </div>
+</form>
+<div class="footer">
+    XX公司 天气版权所有 copyright @XX气象分析服务中国
+</div>
+</body>
+</html>

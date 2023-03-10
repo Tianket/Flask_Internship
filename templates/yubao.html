@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>天气预报</title>
+    <link rel="stylesheet" href="../static/q3q.css">
+</head>
+
+<script>
+    window.onload = function () {
+        var xmlhttp = new XMLHttpRequest()
+        xmlhttp.open("GET", "/prov") //绑定地址
+        xmlhttp.send()
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                var res = JSON.parse(xmlhttp.responseText)
+                var sel = document.getElementById("prov")//通过id找到标签值，sel标签
+                for (var i = 0; i < res.data.length; i++) { //循环来列出省
+                    sel.innerHTML += "<option value=" + res.data[i].id + ">" + // 会覆盖上一个 所以需要加
+                        res.data[i].pname + "</option>"
+                }
+            }
+        }
+    }
+
+    function tocity() {
+        var id = document.getElementById("prov").value
+        var xmlhttp = new XMLHttpRequest()
+        xmlhttp.open("GET", "/city?pid=" + id) //get 传id值
+        xmlhttp.send()
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                var res = JSON.parse(xmlhttp.responseText)
+                var city = document.getElementById("city")
+                city.innerHTML = ""
+                for (var i = 0; i < res.length; i++) {
+                    city.innerHTML += "<option value=" + res[i].cityname + ">" +
+                        res[i].cname + "</option>"
+                }
+            }
+        }
+    }
+
+    function towear() {
+        var city = document.getElementById("city").value
+        if (typeof city == "undefined" || city == "") { //现判断是不是选了
+            alert("请选择城市")
+        } else {
+            var xmlhttp = new XMLHttpRequest()
+            xmlhttp.open("GET", "/wear?city=" + city)
+            xmlhttp.send()
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    var res = JSON.parse(xmlhttp.responseText)
+                    document.getElementById("tabdiv").innerHTML = "" // 对表格进行清空！！
+                    document.getElementById("tabdiv").innerHTML += res.data
+                }
+            }
+        }
+    }
+</script>
+<body>
+<div class="header">
+    <div class="nav">
+        <img src="../static/logo.png" alt="" class="img1">
+        <ul>
+            <li><a href="/">网站首页</a></li>
+            <li><a href="/news">天气新闻</a></li>
+            <li class="sel"><a href="/yubao">天气预报</a></li>
+            <li><a href="/aqi">空气质量</a></li>
+            <li><a href="/xxt">线性图</a></li>
+            <li><a href="/bzt">饼状图</a></li>
+            <li><a href="/geot">地图</a></li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="wrap content">
+    <p class="wrap-title">天气数据分析系统 > 天气预报</p>
+    <div class="seafom">
+        <p>省：<select name="pid" id="prov" onchange="tocity()">
+            <option>请选择</option>
+        </select></p>
+        <p>市：<select name="city" id="city">
+            <option>请选择</option>
+        </select></p>
+        <p><input type="button" value="查询" class="btn" onclick="towear()"></p>
+    </div>
+    <h2 class="data-title">天气预报</h2>
+    <div class="datadiv">
+        <p>数据为中央气象局发布的24小时天气预报</p>
+        <div id="tabdiv"></div>
+    </div>
+</div>
+
+<div class="footer">
+    XX公司 天气版权所有 copyright @XX气象分析服务中国
+</div>
+</body>
+</html>

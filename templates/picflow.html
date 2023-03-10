@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- 引入swiper.css -->
+    <link rel="stylesheet" href="./swiper/swiper-bundle.min.css" />
+    <!-- 引入swiper.js -->
+    <script src="./swiper/swiper-bundle.min.js"></script>
+    <style>
+      .swiper {
+        width: 570px;
+        height: 490px;
+        position: relative;
+        overflow: hidden;
+      }
+      .swiper-pagination {
+        bottom: 30px !important;
+      }
+      .swiper {
+        --swiper-theme-color: #ff6600; /* 设置Swiper风格 */
+        --swiper-navigation-color: #00ff33; /* 单独设置按钮颜色 */
+        --swiper-navigation-size: 50px; /* 设置按钮大小 */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="swiper">
+      <!-- 图片 -->
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="../static/2.gif" alt="" />
+        </div>
+        <div class="swiper-slide">
+          <img src="../static/3.gif" alt="" />
+        </div>
+        <div class="swiper-slide">
+          <img src="../static/1.jpg" alt="" />
+        </div>
+      </div>
+      <!-- 如果需要分页器 -->
+      <div class="swiper-pagination"></div>
+
+      <!-- 如果需要导航按钮 -->
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+    <script>
+      var mySwiper = new Swiper(".swiper", {
+        //   设置图片的切换模式
+        effect: "cube",
+        //   设置自动切换的时间
+        autoplay: {
+          delay: 5000,
+        },
+        loop: true, // 循环模式选项
+
+        // 如果需要分页器
+        pagination: {
+          el: ".swiper-pagination",
+        },
+
+        // 如果需要前进后退按钮
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+
+        // 如果需要滚动条
+        scrollbar: {
+          el: ".swiper-scrollbar",
+        },
+      });
+    </script>
+
+    <!-- https://www.swiper.com.cn/ -->
+  </body>
+</html>

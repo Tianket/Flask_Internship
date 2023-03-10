@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Log in</title>
+    <link rel="stylesheet" href="../static/q3q.css">
+    <style>
+        .msg {
+            font-size: 1.1em;
+            color: darkred;
+        }
+
+        .none {
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <div class="nav">
+        <img src="../static/logo.png" alt="" class="img1">
+        <ul>
+            <li><a href="/">网站首页</a></li>
+            <li><a href="/news">天气新闻</a></li>
+            <li><a href="/yubao">天气预报</a></li>
+            <li><a href="/aqi">空气质量</a></li>
+            <li><a href="/xxt">线性图</a></li>
+            <li><a href="/bzt">饼状图</a></li>
+            <li><a href="/geot">地图</a></li>
+        </ul>
+    </div>
+</div>
+<form action="/logininfo" method="post">
+
+    <div class="center shd">
+        <div>
+            <table border="0">
+                <tr>
+                    <td><h2>登录页面</h2></td>
+                </tr>
+                <tr>
+                    <td>用户名：</td>
+                    <td><input type="text" ; name="usrname"></td>
+                </tr>
+                <tr>
+                    <td>密码：</td>
+                    <td><input type="password" ; name="usrpwd"></td>
+                </tr>
+
+            </table>
+            <br>
+            <ul class="none">
+                <li>
+                    <button type="submit" class="btn">登录</button>
+                </li>
+                <li>{% if session.get("msg")!=None %}<p class="msg">{{ session.get("msg")}}</p>
+                {% else %}<p class="msg"></p>{% endif %}</li>
+            </ul>
+        </div>
+    </div>
+</form>
+<div class="footer">
+</div>
+</body>
+</html>

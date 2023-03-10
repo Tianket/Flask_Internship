@@ -1,0 +1,84 @@
+*{margin: 0px; padding: 0px;}
+.fl{float: left}
+.fr{float: right}
+.header{width:100%; background-color: rgb(0,120,90); margin-bottom: 10px;}
+.nav{margin: 0 auto; width:1200px; background-color: rgb(0,120,90); display: flex;}
+.nav ul{list-style: none;display: flex;
+    width: 10px; width: 100%; justify-content: flex-end}
+.nav a{font-size: 1.1em; color: white; display: block; padding: 0 20px;
+    text-decoration: none; height:100px; line-height: 100px}
+.nav a:hover{background-color: rgb(158,132,77)}
+.nav .sel{background-color: rgb(158,132,77)}
+.img1{margin: 10px 20px 10px 0px; height: 60px; object-fit: contain; justify-content: flex-end}
+.center{width:800px; height: 400px; background-color: rgb(158,132,77,0.8); color: white;
+    margin: 0 auto; display: flex;justify-content: center;align-items: center; border-radius: 5px;}
+.btn{border: none; border-radius: 4px; padding: 5px 15px;
+    background-color: rgb(0,120,90); color: white; margin: 5px;}
+.btn:hover{transform: scale(1.1);}
+.msg{font-size: 1.1em; color: darkred;}
+.none{list-style: none;}
+/*.area{padding: 10px; border: 1px solid darkorange;*/
+/*      border-radius: 5px; background-color: #ffec99;*/
+/*      width: 100%;}*/
+.shd{filter:progid:DXImageTransform.Microsoft.Shadow(color=#909090,direction=120,strength=4);
+    -moz-box-shadow: 2px 2px 10px #909090;
+    -webkit-box-shadow: 2px 2px 10px #909090;
+    box-shadow:2px 2px 10px #909090;}
+.container{width: 1200px; height: 1500px; margin: 0 auto; display: flex;}
+.side1{width: 300px; margin: 10px 10px 10px 0px; justify-content: space-between;}
+.side1 a{display: block; text-decoration: none; padding: 15px 20px;color: black; transition: transform 0.5s;}
+.side1 ul{list-style: none; background-color: white; text-decoration: none;}
+.side1 a:hover{background-color: rgb(158,132,77,0.8); color: white; transform: scale(1.1);}
+.side1 h2{padding: 10px 20px; background-color: rgb(158,132,77,0.8); color: white;}
+.side2{width: 700px; margin: 10px; justify-content: space-between; }
+.bar1{width: 600px; height: 150px; margin: 20px auto; clear: both; border-radius: 5px; display: flex}
+.img0{width:100%}
+.img3{height: 50px; width: 50px;}
+.bar2{height: 120px; width: 150px; margin: 10px; border-radius: 3px; justify-content: space-between;}
+.bar3{height: 120px; width: 350px; margin: 10px; border-radius: 3px; justify-content: space-between;}
+.img0{width:100%}
+.img3{object-fit: contain;}
+
+.side3{width: 300px; margin: 10px 0px 10px 10px; justify-content: space-between;}
+.side4{width: 850px; margin: 10px 0px 10px 10px;}
+.inn{width: 800px; height: 400px; margin: 10px auto; clear: both;}
+
+
+.s3a{display: block; text-decoration: none; padding: 15px 20px;color: white;
+    transition: transform 0.5s;background-color: rgb(158,132,77,0.8)}
+.s3ul{list-style: none; background-color: white; text-decoration: none;}
+.s3a1{color: rgb(0,120,90); text-decoration: none; }
+.s3ul a:hover{color: white; transform: scale(1.1);}
+.news ul{padding: 0px 20px; list-style: none; float: left; margin-bottom: 13px;}
+.news a{color: black; text-decoration: none; font-size: 0.8em;}
+.news a:hover{ text-decoration: none; color: rgb(0,120,90);}
+.clearbox{padding: 5px 20px; margin-top: 10px; margin-bottom: 10px;background-color: rgb(0,120,90); color: white; display: inline-block;}
+.news ul li{padding: 3px 6px;}
+.s3a1:hover{transform: scale(1.1); transition: transform 0.5s;}
+.news span{background-color: rgb(0,120,90); color: white; display: inline-block; padding:5px;margin: 0 13px 0 0; font-size: 0.8em; border-radius: 1px;}
+.icon ul{overflow: hidden; list-style: none; text-align: center; margin: 10px 0 0 10px; clear: left;}
+.icon li{float: left; width: 30%; margin: 5px 1%;}
+.img2{height: 50px; object-fit: contain}
+.icon img{transition: all 0.3s ease;}
+.icon ul li:hover img{transform: rotate(360deg)}
+input{background: white;outline:none;border:1px solid black;}
+
+
+/*天气预报和空气质量*/
+
+.content{background-color: white;padding: 30px 0px;margin: 0 auto; width:1200px;}
+.wrap-title{font-size: 16px;padding: 0px 30px}
+.seafom{overflow: hidden;padding: 20px 0px;}
+.seafom p{float: left;margin-left: 30px;}
+.seafom select{width: 200px;text-align: center;height: 30px}
+.seafom select option{padding: 5px 0px}
+.data-title{text-align: center;padding: 10px 0px}
+.datadiv{padding: 10px 30px;text-align: center}
+.datadiv table{border-collapse: collapse;text-align: center;margin: 10px 0px; width: 100%} /*合并间距值，否则会保留空隙*/
+.datadiv table td{border:1px solid #ccc;}
+.tab1 tr{background-color: white} /*第一个表格单独进行调整*/
+.tab1 .bytr {background-color: rgb(0,120,90);color: white} /*第一行保持绿色*/
+.datadiv table td{padding:10px 0px;}
+#charts{width: 100%; height: 600px;margin-top: 50px;}
+#msg{padding: 50px;color: red;}
+.footer{background-color: #999;color: white;text-align: center;padding: 10px;bottom: 0;position: fixed;width: 100%;}
